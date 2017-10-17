@@ -1,0 +1,59 @@
+#container-tweets {
+    padding: 2em;
+}
+
+#container-tweets .tweet {
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: darkgray;
+}
+
+#container-tweets .tweet header {
+    background-color: #f3f3f3;
+    overflow: hidden;
+    padding: 10px;
+}
+
+#container-tweets .tweet header img {
+    float: left;
+    border-radius: 5px;
+}
+
+#container-tweets .user-fullname {
+    float: left;
+    padding: 0 10px;
+    margin: 0;
+    color: #647C85;
+}
+
+#container-tweets .user-handle {
+    float: right;
+    color: grey;
+    margin: 0;
+    padding-top: 10px;
+}
+
+#container-tweets .tweet-content{
+    margin: 0;
+    padding: 20px 10px;
+    border-bottom: 1px solid;
+    border-color: lightgrey;
+}
+
+#container-tweets .tweet footer {
+    padding: 10px;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.tweet > footer .icon {
+    float:right;
+    padding-left: 5px;
+}
+
+    
+
+
+
+
+
