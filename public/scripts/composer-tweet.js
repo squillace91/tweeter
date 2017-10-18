@@ -1,9 +1,8 @@
-// $(document).ready(function (){
-//     $( ".tweet" )
-//     .on('mouseenter', function() {
-//         console.log('aiaiai');
-//     })
-//     .on('mouseleave', function() {
-//         console.log('oioioio');
-//     });
-// });
+$(document).ready(function () {
+  $("#nav-bar button").click(function() {
+    console.log('hello');
+    $( ".new-tweet" ).slideToggle( "slow", function() {
+      $(".new-tweet textarea").focus();
+    });
+  });
+});
