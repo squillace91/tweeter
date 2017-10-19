@@ -13,7 +13,7 @@ $(document).ready(function() {/*
 
   function createTweetElementFooter(tweetJS) {
       return $("<footer>")
-        .append($("<span>").text(tweetJS.created_at))
+        .append($("<span>").text(moment(tweetJS.created_at).fromNow()))
         .append($("<i>").addClass("fa fa-heart fa-lg"))
         .append($("<i>").addClass("fa fa-retweet fa-lg"))
         .append($("<i>").addClass("fa fa-flag fa-lg"));
