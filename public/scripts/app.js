@@ -14,9 +14,9 @@ $(document).ready(function() {/*
   function createTweetElementFooter(tweetJS) {
       return $("<footer>")
         .append($("<span>").text(tweetJS.created_at))
-        .append($("<img>").attr("src", 'https://dummyimage.com/20x20/000000/0011ff.jpg'))
-        .append($("<img>").attr("src", 'https://dummyimage.com/20x20/000000/0011ff.jpg'))
-        .append($("<img>").attr("src", 'https://dummyimage.com/20x20/000000/0011ff.jpg'));
+        .append($("<i>").addClass("fa fa-heart fa-lg"))
+        .append($("<i>").addClass("fa fa-retweet fa-lg"))
+        .append($("<i>").addClass("fa fa-flag fa-lg"));
   }
 
   function createTweetElement(tweetJS) {
