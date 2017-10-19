@@ -52,6 +52,7 @@ $(document).ready(function() {/*
     });
   }
 
+  // TODO Put this submit function in another file
   $('.new-tweet form').on('submit', function(event) {
     event.preventDefault();
     var theForm = this;
@@ -63,6 +64,7 @@ $(document).ready(function() {/*
     } else if (tweetCount <= 0) {
       $('.error-message').text('Empty tweet!').show().fadeOut(1500);
     } else {
+      $(".new-tweet .counter").text('140');
       //TODO make it a function instead sending the data and the form
       $.ajax({
         method: 'post',
