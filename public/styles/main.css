@@ -115,7 +115,7 @@ body {
     font-size: 42px;
     padding-left: 10px;
     float: left; }
-  #nav-bar button {
+  #nav-bar #composeBtn {
     float: right;
     background: #E5FEFF;
     border: 1px solid;
@@ -124,5 +124,19 @@ body {
     border-radius: 5px;
     color: #00a087;
     border-color: black; }
+  #nav-bar #loginBtn {
+    float: right;
+    background: #E5FEFF;
+    border: 1px solid;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 5px;
+    color: #00a087;
+    border-color: black; }
+  #nav-bar div {
+    display: flex;
+    justify-content: flex-end; }
+  #nav-bar div > input{    
+    margin: 20px 2px;}
 
 /*# sourceMappingURL=main.css.map */
