@@ -14,7 +14,7 @@ $(document).ready(function() {/*
   function createTweetElementFooter(tweetJS) {
       return $("<footer>")
         .append($("<span>").text(moment(tweetJS.created_at).fromNow()))
-        .append($("<i>").addClass("fa fa-heart fa-lg"))
+        .append($("<i>").attr("data-userid",tweetJS._id).text(tweetJS.likes).addClass("fa fa-heart fa-lg likes"))
         .append($("<i>").addClass("fa fa-retweet fa-lg"))
         .append($("<i>").addClass("fa fa-flag fa-lg"));
   }
@@ -76,6 +76,18 @@ $(document).ready(function() {/*
       });
     }
   })
+
+  $(document).ready(function() {
+    $(document).on('click','.likes',function() {
+        const id = this.dataset.userid;
+        $.ajax({
+            method: 'PUT',
+            url: '/tweets/likes/' + id ,
+        }).done(function (){
+            loadTweets();
+        });
+    });
+  });
 
   loadTweets();
 });
