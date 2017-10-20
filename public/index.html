@@ -18,6 +18,7 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
     <script type="text/javascript" src="/scripts/composer-tweet.js"></script>
+    <script type="text/javascript" src="/scripts/login-registration.js"></script>
     <script type="text/javascript" src="https://momentjs.com/downloads/moment.min.js"></script>
   </head>
 
@@ -27,12 +28,17 @@
     <nav id="nav-bar">
       <img class="logo" src="/images/bird.png" width="80px" height="80px">
       <span class="header">Tweeter</span>
-      <div id="login">
-        <input type="text" name="email" placeholder="Email">
+      <form id="login" action="/users/new" method="POST">
+        <span class="error-message"></span>
+        <input type="text" name="username" placeholder="Username">
         <input type="text" name="password" placeholder="Password">
         <button id="loginBtn" >Log in</button>
+        <button id="registerBtn" >Register</button>
+      </form>
+      <span id="logged-in">
         <button id="composeBtn">Compose</button>
-      </div>
+        <button id="logoutBtn">Log out</button>
+      </span>
     </nav>
 
     <!-- Page-specific (main) content here -->

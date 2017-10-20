@@ -75,6 +75,7 @@ body {
   padding: 0px 2px; }
 
 .new-tweet {
+  display:none;
   background-color: #eeeeee;
   margin: 0em 2em;
   border-radius: 5px;
@@ -115,7 +116,7 @@ body {
     font-size: 42px;
     padding-left: 10px;
     float: left; }
-  #nav-bar #composeBtn {
+  #nav-bar #composeBtn  {
     float: right;
     background: #E5FEFF;
     border: 1px solid;
@@ -124,19 +125,21 @@ body {
     border-radius: 5px;
     color: #00a087;
     border-color: black; }
-  #nav-bar #loginBtn {
+  #nav-bar #loginBtn, #registerBtn, #logoutBtn {
     float: right;
     background: #E5FEFF;
     border: 1px solid;
-    margin: 20px 0;
+    margin: 20px 1px;
     padding: 10px;
     border-radius: 5px;
     color: #00a087;
     border-color: black; }
-  #nav-bar div {
+  #nav-bar form {
     display: flex;
     justify-content: flex-end; }
-  #nav-bar div > input{    
+  #nav-bar form > input{    
     margin: 20px 2px;}
-
+  #nav-bar #logged-in {
+    display: none;
+  }
 /*# sourceMappingURL=main.css.map */

@@ -57,6 +57,8 @@ $(document).ready(function() {/*
     event.preventDefault();
     var theForm = this;
     var data = $(this).serialize();
+    console.log(data);
+    console.log(data);
     var tweetCount = $(".new-tweet textarea").val().length;
 
     if (tweetCount > 140) {
