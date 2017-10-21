@@ -12,11 +12,13 @@ module.exports = function(UserHelpers) {
       username: req.body.username,
       password: req.body.password
     }
-    UserHelpers.createNewUser(user, (err) => {
+    UserHelpers.createNewUser(user, (err, user) => {
       if (err) {
         res.status(200).send({ error: err.message });
         // res.status(500).json({ error: err.message });
       } else {
+        req.session.user_id = user.ops[0]._id;
+        req.session.username = user.ops[0].username;
         res.status(201).send();
       }
     });
@@ -44,6 +46,7 @@ module.exports = function(UserHelpers) {
 
   usersRoutes.post("/logout", function(req, res) {
     req.session = null;
+    res.status(200).send();
   });
 
   return usersRoutes;

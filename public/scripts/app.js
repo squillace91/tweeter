@@ -52,12 +52,12 @@ $(document).ready(function() {/*
     }).done(function (tweets) {
       // document.cookie = tweets.sess;
       // console.log('cookie client side',$(document.cookie));
-      console.log(tweets.session.username);
-      if(tweets.session){
+      console.log(tweets.session);
+      if(tweets.session.user_id){
         console.log('logged in');
-        $('#login').toggle();
+        $('#login').hide();
         $('.new-tweet').slideDown(500);
-        $('#logged-in').toggle();
+        $('#logged-in').show();
         $('#user-name').text(tweets.session.username).show();
       } else {
         console.log('not logged in');
@@ -104,6 +104,60 @@ $(document).ready(function() {/*
         });
     });
   });
+
+  $("#nav-bar #login").on('submit', function(event) {
+    event.preventDefault();
+
+    let data = {};
+    let formdata = $(this).serializeArray();
+    let theForm = this;
+
+    $(formdata).each(function(index, obj){
+        data[obj.name] = obj.value;
+    });
+
+    if(document.activeElement.id==='loginBtn'){
+        $.ajax({
+            method: 'POST',
+            url: '/users/login' ,
+            data: data,
+        }).done(function (data){
+            if(data.length === 0){
+                $('#login .error-message').text('Username does not exist!').show().fadeOut(3000);
+            } else {
+                theForm.reset();
+                loadTweets();
+                $('.new-tweet').slideDown(500);
+            }
+        });
+    } else if (document.activeElement.id==='registerBtn'){
+        $.ajax({
+            method: 'POST',
+            url: '/users/new' ,
+            data: data,
+        }).done(function (data){
+            if(data.error){
+                $('#login .error-message').text('Username is being used!').show().fadeOut(3000);
+            } else {
+                theForm.reset();  
+                loadTweets();
+            }
+        });
+    }
+    
+});
+
+$("#nav-bar #logoutBtn").click(function() {
+    $.ajax({
+        method: 'POST',
+        url: '/users/logout' ,
+    });
+    $('.new-tweet').slideUp(500);
+    $('#logged-in').toggle();
+    $('#login').toggle();
+});
+
+
 
   loadTweets();
 });
