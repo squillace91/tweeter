@@ -44,11 +44,25 @@ $(document).ready(function() {/*
   }
 
   function loadTweets() {
+    // document.cookie = 'coooookie';
+    // console.log('cookie client side',$(document.cookie));
     $.ajax({
       method: 'get',
       url: '/tweets'
     }).done(function (tweets) {
-      renderTweets(tweets);
+      // document.cookie = tweets.sess;
+      // console.log('cookie client side',$(document.cookie));
+      console.log(tweets.session.username);
+      if(tweets.session){
+        console.log('logged in');
+        $('#login').toggle();
+        $('.new-tweet').slideDown(500);
+        $('#logged-in').toggle();
+        $('#user-name').text(tweets.session.username).show();
+      } else {
+        console.log('not logged in');
+      }
+      renderTweets(tweets.tweets);
     });
   }
 

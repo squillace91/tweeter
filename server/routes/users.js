@@ -27,6 +27,7 @@ module.exports = function(UserHelpers) {
       username: req.body.username,
       password: req.body.password
     }
+
     UserHelpers.authenticate(checkUser, (err, user) => {
       console.log('autenticate');
       if (err) {
@@ -34,10 +35,15 @@ module.exports = function(UserHelpers) {
         res.status(200).send({ error: err.message });
         // res.status(500).json({ error: err.message });
       } else {
-        console.log('data: ',user);
+        req.session.user_id = user[0]._id;
+        req.session.username = user[0].username;
         res.status(200).send(user);
       }
     });
+  });
+
+  usersRoutes.post("/logout", function(req, res) {
+    req.session = null;
   });
 
   return usersRoutes;

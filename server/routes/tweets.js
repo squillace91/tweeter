@@ -8,11 +8,16 @@ const tweetsRoutes  = express.Router();
 module.exports = function(DataHelpers) {
 
   tweetsRoutes.get("/", function(req, res) {
+    console.log('active sessions: ',req.session);
     DataHelpers.getTweets((err, tweets) => {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
-        res.json(tweets);
+        const response = {
+          tweets:tweets,
+          session: req.session
+        };
+        res.json(response);
       }
     });
   });

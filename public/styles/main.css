@@ -117,7 +117,7 @@ body {
     padding-left: 10px;
     float: left; }
   #nav-bar #composeBtn  {
-    float: right;
+    /* float: right; */
     background: #E5FEFF;
     border: 1px solid;
     margin: 20px 0;
@@ -126,7 +126,7 @@ body {
     color: #00a087;
     border-color: black; }
   #nav-bar #loginBtn, #registerBtn, #logoutBtn {
-    float: right;
+    /* float: right; */
     background: #E5FEFF;
     border: 1px solid;
     margin: 20px 1px;
@@ -134,12 +134,20 @@ body {
     border-radius: 5px;
     color: #00a087;
     border-color: black; }
-  #nav-bar form {
+  #nav-bar form , {
     display: flex;
     justify-content: flex-end; }
   #nav-bar form > input{    
     margin: 20px 2px;}
   #nav-bar #logged-in {
     display: none;
+    float:right;
+  }
+  #nav-bar #logged-in #user-name{
+    display: none;
+    margin: 0 5px;
+  }
+  #nav-bar #login {
+    float:right;
   }
 /*# sourceMappingURL=main.css.map */

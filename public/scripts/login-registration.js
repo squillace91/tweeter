@@ -29,6 +29,7 @@ $(document).ready(function () {
                 url: '/users/new' ,
                 data: data,
             }).done(function (data){
+                loadTweets();
                 if(data.error){
                     $('#login .error-message').text('Username is being used!').show().fadeOut(3000);
                 } else {
@@ -40,14 +41,13 @@ $(document).ready(function () {
     });
 
     $("#nav-bar #logoutBtn").click(function() {
+        $.ajax({
+            method: 'POST',
+            url: '/users/logout' ,
+        });
         $('.new-tweet').slideUp(500);
         $('#logged-in').toggle();
         $('#login').toggle();
     });
-
-    // $("#nav-bar #login").on('submit', function(event) {
-    //     $('#logged-in').toggle();
-    //     $('#login').toggle();
-    // });
   });
 
