@@ -14,7 +14,7 @@ $(document).ready(function() {/*
   function createTweetElementFooter(tweetJS) {
       return $("<footer>")
         .append($("<span>").text(moment(tweetJS.created_at).fromNow()))
-        .append($("<i>").attr("data-userid",tweetJS._id).text(tweetJS.likes).addClass("fa fa-heart fa-lg likes"))
+        .append($("<i>").attr("data-tweetid",tweetJS._id).text(tweetJS.likes).addClass("fa fa-heart fa-lg likes"))
         .append($("<i>").addClass("fa fa-retweet fa-lg"))
         .append($("<i>").addClass("fa fa-flag fa-lg"));
   }
@@ -95,7 +95,7 @@ $(document).ready(function() {/*
 
   $(document).ready(function() {
     $(document).on('click','.likes',function() {
-        const id = this.dataset.userid;
+        const id = this.dataset.tweetid;
         $.ajax({
             method: 'PUT',
             url: '/tweets/likes/' + id ,

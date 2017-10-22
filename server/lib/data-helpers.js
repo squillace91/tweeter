@@ -18,8 +18,9 @@ module.exports = function makeDataHelpers(db) {
       db.collection("tweets").find().toArray(callback);
     },
 
-    likeTweet: function(id, callback) {
-      db.collection("tweets").update({_id: mongo.ObjectID(id)},{$inc: {"likes":1}},callback);
+    likeTweet: function(tweetId, userId, callback) {
+      db.collection("tweets").update({_id: mongo.ObjectID(tweetId)},{$inc: {"likes":1}});
+      db.collection("tweets").update({_id: mongo.ObjectID(tweetId)},{$push: {"likedBy":userId}},callback);
     }
 
   };
