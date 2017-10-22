@@ -158,12 +158,13 @@ $(document).ready(function () {
         $.ajax({
             method: 'POST',
             url: '/users/logout',
+        }).done(function () {
+            $('.new-tweet').slideUp(500);
+            $('#logged-in').toggle();
+            $('#login').toggle();
+            local_user = '';
+            loadTweets();
         });
-        $('.new-tweet').slideUp(500);
-        $('#logged-in').toggle();
-        $('#login').toggle();
-        local_user = '';
-        loadTweets();
     });
 
     loadTweets();
