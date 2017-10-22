@@ -33,11 +33,10 @@ module.exports = function (UserHelpers) {
     }
 
     UserHelpers.authenticate(checkUser, (err, user) => {
-      if (err) {
+      if (user.length===0) {
         res.status(200).send({
-          error: err.message
+          error: 'Credentials invalid!'
         });
-        // res.status(500).json({ error: err.message });
       } else {
         req.session.user_id = user[0]._id;
         req.session.username = user[0].username;

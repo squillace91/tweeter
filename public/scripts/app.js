@@ -130,7 +130,7 @@ $(document).ready(function () {
                 url: '/users/login',
                 data: data,
             }).done(function (data) {
-                if (data.length === 0) {
+                if (data.error) {
                     $('#login .error-message').text('Username does not exist!').show().fadeOut(3000);
                 } else {
                     theForm.reset();
