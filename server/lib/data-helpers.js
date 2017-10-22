@@ -21,7 +21,11 @@ module.exports = function makeDataHelpers(db) {
     likeTweet: function(tweetId, userId, callback) {
       db.collection("tweets").update({_id: mongo.ObjectID(tweetId)},{$inc: {"likes":1}});
       db.collection("tweets").update({_id: mongo.ObjectID(tweetId)},{$push: {"likedBy":userId}},callback);
-    }
+    },
 
+    dislikeTweet: function(tweetId, userId, callback) {
+      db.collection("tweets").update({_id: mongo.ObjectID(tweetId)},{$inc: {"likes":-1}});
+      db.collection("tweets").update({_id: mongo.ObjectID(tweetId)},{$pull: {"likedBy":{ $in: [userId] }}},callback);
+    }
   };
 }

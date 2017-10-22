@@ -34,6 +34,18 @@ module.exports = function(DataHelpers) {
     });
   });
 
+  tweetsRoutes.put("/dislikes/:id", function(req, res) {
+    const tweetId = req.params.id;
+    const userId = req.session.user_id;
+    DataHelpers.dislikeTweet(tweetId,userId, (err) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.status(200).send();
+      }
+    });
+  });
+
   tweetsRoutes.post("/", function(req, res) {
     if (!req.body.text) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
