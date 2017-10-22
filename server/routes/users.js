@@ -31,9 +31,7 @@ module.exports = function(UserHelpers) {
     }
 
     UserHelpers.authenticate(checkUser, (err, user) => {
-      console.log('autenticate');
       if (err) {
-        console.log('error: ',user);
         res.status(200).send({ error: err.message });
         // res.status(500).json({ error: err.message });
       } else {

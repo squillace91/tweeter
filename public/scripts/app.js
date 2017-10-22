@@ -55,24 +55,16 @@ $(document).ready(function () {
     }
 
     function loadTweets() {
-        // document.cookie = 'coooookie';
-        // console.log('cookie client side',$(document.cookie));
         $.ajax({
             method: 'get',
             url: '/tweets'
         }).done(function (tweets) {
-            // document.cookie = tweets.sess;
-            // console.log('cookie client side',$(document.cookie));
-            console.log(tweets.session);
             if (tweets.session.user_id) {
                 local_user = tweets.session.user_id;
-                console.log('logged in');
                 $('#login').hide();
                 $('.new-tweet').slideDown(500);
                 $('#logged-in').show();
                 $('#user-name').text(tweets.session.username).show();
-            } else {
-                console.log('not logged in');
             }
             renderTweets(tweets.tweets);
         });
@@ -83,8 +75,6 @@ $(document).ready(function () {
         event.preventDefault();
         var theForm = this;
         var data = $(this).serialize();
-        console.log(data);
-        console.log(data);
         var tweetCount = $(".new-tweet textarea").val().length;
 
         if (tweetCount > 140) {
@@ -112,7 +102,6 @@ $(document).ready(function () {
             if(Boolean(local_user)){
                 if(isLiked==='true'){
                     this.dataset.liked = false;
-                    console.log('trueeee');
                     $.ajax({
                         method: 'PUT',
                         url: '/tweets/dislikes/' + id,
