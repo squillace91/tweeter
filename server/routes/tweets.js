@@ -41,6 +41,8 @@ module.exports = function(DataHelpers) {
     }
 
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
+    user.name = req.session.username;
+    user.handle = '@' + req.session.username;
     const tweet = {
       user: user,
       content: {
