@@ -17,7 +17,7 @@ const MONGODB_URI = "mongodb://localhost:27017/tweeter";
 app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2']
-}))
+}));
 
 MongoClient.connect(MONGODB_URI, (err, db) => {
 

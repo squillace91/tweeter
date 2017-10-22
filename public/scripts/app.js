@@ -1,9 +1,4 @@
 $(document).ready(function () {
-    /*
-     * Client-side JS logic goes here
-     * jQuery is already loaded
-     * Reminder: Use (and do all your DOM work in) jQuery's document ready function
-     */
     let local_user = '';
 
     function createTweetElementHeader(user) {
@@ -14,7 +9,7 @@ $(document).ready(function () {
     }
 
     function createTweetElementFooter(tweetJS) {
-        // TODO: Change in a better way!
+        // TODO: Change to a better way!
         let color = '';
         let liked = false;
         if (tweetJS.likedBy) {
@@ -40,7 +35,7 @@ $(document).ready(function () {
         return tweet;
     }
 
-    var allTweets = $('#container-tweets');
+    let allTweets = $('#container-tweets');
 
     function renderTweets(tweets) {
         // loops through tweets
@@ -70,12 +65,11 @@ $(document).ready(function () {
         });
     }
 
-    // TODO Put this submit function in another file
     $('.new-tweet form').on('submit', function (event) {
         event.preventDefault();
-        var theForm = this;
-        var data = $(this).serialize();
-        var tweetCount = $(".new-tweet textarea").val().length;
+        let theForm = this;
+        let data = $(this).serialize();
+        let tweetCount = $(".new-tweet textarea").val().length;
 
         if (tweetCount > 140) {
             $('.error-message').text('Tweet too long!').show().fadeOut(1500);
