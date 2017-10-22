@@ -26,7 +26,6 @@ $(document).ready(function () {
     }
 
     function createTweetElement(tweetJS) {
-
         const tweet = $("<article>").addClass("tweet")
             .append(createTweetElementHeader(tweetJS.user))
             .append($("<p>").text(tweetJS.content.text).addClass("tweet-content"))
@@ -93,8 +92,8 @@ $(document).ready(function () {
         $(document).on('click', '.likes', function () {
             const id = this.dataset.tweetid;
             const isLiked = this.dataset.liked;
-            if(Boolean(local_user)){
-                if(isLiked==='true'){
+            if (Boolean(local_user)) {
+                if (isLiked === 'true') {
                     this.dataset.liked = false;
                     $.ajax({
                         method: 'PUT',

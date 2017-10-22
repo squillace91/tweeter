@@ -1,20 +1,22 @@
 "use strict";
 
-const userHelper    = require("../lib/util/user-helper")
+const userHelper = require("../lib/util/user-helper")
 
-const express       = require('express');
-const usersRoutes  = express.Router();
+const express = require('express');
+const usersRoutes = express.Router();
 
-module.exports = function(UserHelpers) {
+module.exports = function (UserHelpers) {
 
-  usersRoutes.post("/new", function(req, res) {
+  usersRoutes.post("/new", function (req, res) {
     const user = {
       username: req.body.username,
       password: req.body.password
     }
     UserHelpers.createNewUser(user, (err, user) => {
       if (err) {
-        res.status(200).send({ error: err.message });
+        res.status(200).send({
+          error: err.message
+        });
         // res.status(500).json({ error: err.message });
       } else {
         req.session.user_id = user.ops[0]._id;
@@ -24,7 +26,7 @@ module.exports = function(UserHelpers) {
     });
   });
 
-  usersRoutes.post("/login", function(req, res) {
+  usersRoutes.post("/login", function (req, res) {
     const checkUser = {
       username: req.body.username,
       password: req.body.password
@@ -32,7 +34,9 @@ module.exports = function(UserHelpers) {
 
     UserHelpers.authenticate(checkUser, (err, user) => {
       if (err) {
-        res.status(200).send({ error: err.message });
+        res.status(200).send({
+          error: err.message
+        });
         // res.status(500).json({ error: err.message });
       } else {
         req.session.user_id = user[0]._id;
@@ -42,7 +46,7 @@ module.exports = function(UserHelpers) {
     });
   });
 
-  usersRoutes.post("/logout", function(req, res) {
+  usersRoutes.post("/logout", function (req, res) {
     req.session = null;
     res.status(200).send();
   });

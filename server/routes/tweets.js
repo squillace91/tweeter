@@ -1,19 +1,21 @@
 "use strict";
 
-const userHelper    = require("../lib/util/user-helper")
+const userHelper = require("../lib/util/user-helper")
 
-const express       = require('express');
-const tweetsRoutes  = express.Router();
+const express = require('express');
+const tweetsRoutes = express.Router();
 
-module.exports = function(DataHelpers) {
+module.exports = function (DataHelpers) {
 
-  tweetsRoutes.get("/", function(req, res) {
+  tweetsRoutes.get("/", function (req, res) {
     DataHelpers.getTweets((err, tweets) => {
       if (err) {
-        res.status(500).json({ error: err.message });
+        res.status(500).json({
+          error: err.message
+        });
       } else {
         const response = {
-          tweets:tweets,
+          tweets: tweets,
           session: req.session
         };
         res.json(response);
@@ -21,33 +23,39 @@ module.exports = function(DataHelpers) {
     });
   });
 
-  tweetsRoutes.put("/likes/:id", function(req, res) {
+  tweetsRoutes.put("/likes/:id", function (req, res) {
     const tweetId = req.params.id;
     const userId = req.session.user_id;
-    DataHelpers.likeTweet(tweetId,userId, (err) => {
+    DataHelpers.likeTweet(tweetId, userId, (err) => {
       if (err) {
-        res.status(500).json({ error: err.message });
+        res.status(500).json({
+          error: err.message
+        });
       } else {
         res.status(200).send();
       }
     });
   });
 
-  tweetsRoutes.put("/dislikes/:id", function(req, res) {
+  tweetsRoutes.put("/dislikes/:id", function (req, res) {
     const tweetId = req.params.id;
     const userId = req.session.user_id;
-    DataHelpers.dislikeTweet(tweetId,userId, (err) => {
+    DataHelpers.dislikeTweet(tweetId, userId, (err) => {
       if (err) {
-        res.status(500).json({ error: err.message });
+        res.status(500).json({
+          error: err.message
+        });
       } else {
         res.status(200).send();
       }
     });
   });
 
-  tweetsRoutes.post("/", function(req, res) {
+  tweetsRoutes.post("/", function (req, res) {
     if (!req.body.text) {
-      res.status(400).json({ error: 'invalid request: no data in POST body'});
+      res.status(400).json({
+        error: 'invalid request: no data in POST body'
+      });
       return;
     }
 
@@ -66,7 +74,9 @@ module.exports = function(DataHelpers) {
 
     DataHelpers.saveTweet(tweet, (err) => {
       if (err) {
-        res.status(500).json({ error: err.message });
+        res.status(500).json({
+          error: err.message
+        });
       } else {
         res.status(201).send();
       }

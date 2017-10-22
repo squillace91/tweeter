@@ -1,10 +1,10 @@
-$(document).ready(function(){
-    $(".new-tweet textarea").on('input', function(){
+$(document).ready(function () {
+    $(".new-tweet textarea").on('input', function () {
         const counter = $(this).siblings('.counter');
         const maxLimit = 140;
         let textLength = this.value.length;
 
-        if(textLength > maxLimit){
+        if (textLength > maxLimit) {
             counter.addClass("limit-text");
         } else {
             counter.removeClass("limit-text");
