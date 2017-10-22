@@ -131,7 +131,7 @@ $(document).ready(function () {
                 data: data,
             }).done(function (data) {
                 if (data.error) {
-                    $('#login .error-message').text('Username does not exist!').show().fadeOut(3000);
+                    $('#login .error-message').text('Credentials invalid!').show().fadeOut(3000);
                 } else {
                     theForm.reset();
                     loadTweets();

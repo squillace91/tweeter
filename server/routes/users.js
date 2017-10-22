@@ -33,6 +33,7 @@ module.exports = function (UserHelpers) {
     }
 
     UserHelpers.authenticate(checkUser, (err, user) => {
+      console.log(user);
       if (user.length===0) {
         res.status(200).send({
           error: 'Credentials invalid!'
